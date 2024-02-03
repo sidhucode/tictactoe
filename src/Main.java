@@ -6,26 +6,30 @@ public class Main {
     private static String player0 = "O";
     private static boolean toggle;
     private static final int keyValue = 10; //Used to give  base for the board (Must be >= 4)
-
     public static void main(String[] args) {
 
         board = new int[3][3];
         setBoard();
         clear();
-        printBoard();
+        title();
         playerToken = 0;
         int game = -1;
+        int tieNumber = 0;
 
-        while (game == -1) {
+        while (game == -1 && tieNumber<9) {
             delay(1);
             clear();
             action();
             game = score();
+            tieNumber++;
             toggleDelay(1);
             if (playerToken == 0)
                 playerToken += 1;
             else
                 playerToken -= 1;
+        }
+        if (tieNumber==9){
+            System.out.println("\nThe Game is a Tie, Rerun the program to try again!");
         }
 
 
@@ -242,6 +246,26 @@ public class Main {
         else {
             delay(secondsToSleep);
         }
+    }
+    public static void title(){
+        System.out.println("::::::   ::     ::::::");
+        delay(1);
+        System.out.println("  ::     ::     ::    ");
+        delay(1);
+        System.out.println("  ::     ::     ::::::\n");
+        delay(1);
+        System.out.println("::::::  :::::::  ::::::");
+        delay(1);
+        System.out.println("  ::    ::___::  ::    ");
+        delay(1);
+        System.out.println("  ::    ::   ::  ::::::\n");
+        delay(1);
+        System.out.println("::::::  :::::::  ::::::");
+        delay(1);
+        System.out.println("  ::    ::   ::  ::___:");
+        delay(1);
+        System.out.println("  ::    :::::::  ::::::");
+
     }
 }
 
